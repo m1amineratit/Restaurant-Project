@@ -1,0 +1,109 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <!-- Menu Section
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 class="section-title serif">Notre Menu</h2>
+            {% for menu in menus %}
+                <div class="menu-grid">
+                    <div class="menu-category">
+                        <h3 class="serif">{{ menu.category }}</h3>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <h4>{{ menu.title }}</h4>
+                                <p>{{ menu.description }}</p>
+                            </div>
+                            <span class="menu-item-price">{{ menu.price }} DH</span>
+                        </div>
+                    </div>
+                </div>
+                
+            {% endfor %}
+        </div>
+    </section> -->
+
+        <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 class="section-title serif">Notre Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-category">
+                    <h3 class="serif">Entrées</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Foie Gras Poêlé</h4>
+                            <p>Foie gras aux figues confites et pain d'épices</p>
+                        </div>
+                        <span class="menu-item-price">185 DH</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Tartare de Saumon</h4>
+                            <p>Saumon frais, avocat et citron vert</p>
+                        </div>
+                        <span class="menu-item-price">140 DH</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Velouté de Champignons</h4>
+                            <p>Crème de cèpes et truffe noire</p>
+                        </div>
+                        <span class="menu-item-price">95 DH</span>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3 class="serif">Plats</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Côte de Bœuf</h4>
+                            <p>Grillée aux herbes, sauce au poivre</p>
+                        </div>
+                        <span class="menu-item-price">320 DH</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Loup de Mer</h4>
+                            <p>En croûte de sel, légumes de saison</p>
+                        </div>
+                        <span class="menu-item-price">280 DH</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Agneau Confit</h4>
+                            <p>Épaule d'agneau aux aromates</p>
+                        </div>
+                        <span class="menu-item-price">290 DH</span>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3 class="serif">Desserts</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Tarte Tatin</h4>
+                            <p>Pommes caramélisées, glace vanille</p>
+                        </div>
+                        <span class="menu-item-price">75 DH</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Crème Brûlée</h4>
+                            <p>À la vanille de Madagascar</p>
+                        </div>
+                        <span class="menu-item-price">65 DH</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Fondant au Chocolat</h4>
+                            <p>Cœur coulant, coulis de fruits rouges</p>
+                        </div>
+                        <span class="menu-item-price">80 DH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

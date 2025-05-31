@@ -1,0 +1,83 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="serif">Le QuatorZe</h1>
+            <p>Cuisine raffinée au cœur de Casablanca</p>
+            <a href="{% url 'reservation' %}" class="btn-primary">Réserver une table</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title serif">À propos</h2>
+            <div class="about-content">
+                <p>Situé au cœur de Casablanca, Le QuatorZe vous invite à découvrir une expérience culinaire d'exception. Notre restaurant allie l'élégance de la cuisine française traditionnelle aux saveurs raffinées dans un cadre intimiste et chaleureux.</p>
+                <br>
+                <p>Chaque plat est préparé avec passion par notre chef, utilisant des ingrédients soigneusement sélectionnés pour créer des saveurs authentiques qui réveilleront vos sens. Notre ambiance feutrée et notre service attentionné font de chaque repas un moment inoubliable.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title serif">Galerie</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="gallery-item" style="background-image: url('https://instagram.frba1-2.fna.fbcdn.net/v/t51.2885-15/497646566_18329891734160208_6724649059934709125_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjg1M3gxMDY4LnNkci5mNzU3NjEuZGVmYXVsdF9pbWFnZSJ9&_nc_ht=instagram.frba1-2.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2QHzSXRvmjkHGYpxmxbD0n4uEEmPB9J7Lvn4TsMMTIdLnGr94PcLreirqoolKvf82LA&_nc_ohc=JnoyAVkhvrIQ7kNvwFuhcAe&_nc_gid=rGkINmd4Ovvzj6mrmTanpA&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzYzMzkyOTMxOTk3ODc3NjUwNw%3D%3D.3-ccb7-5&oh=00_AfLebOEPGI84h1yspr88Bdy2s-VeyGDM-qbDQdpl7Y1w3w&oe=683FD4CC&_nc_sid=7a9f4b')"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title serif">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Adresse</h3>
+                        <p>14 Rue Najib Mahfoud<br>Casablanca, Maroc</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Téléphone</h3>
+                        <p><strong>+212 522 20 96 52</strong></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Horaires d'ouverture</h3>
+                        <p>Lundi - Dimanche: 19h00 - 00h00</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Suivez-nous</h3>
+                        <p>Instagram: @lequatorzecasablanca</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.0234!2d-7.6204!3d33.5731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0!2sCasablanca%2C%20Morocco!5e0!3m2!1sen!2s!4v1234567890"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
