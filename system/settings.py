@@ -25,7 +25,14 @@ SECRET_KEY = 'django-insecure-4$&fuu3jbm(y+-t=!j9)m9di6=l76u-)bh@irfaz5%ekpgk(lg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost' , '127.0.0.1', 'lequatorze.up.railway.app']
+
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://lequatorze.up.railway.app'] 
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+
+SITE_ID = 1
 
 
 # Application definition
@@ -71,14 +78,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'system.wsgi.application'
 
+from decouple import config
+
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',        
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
 
