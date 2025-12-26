@@ -1,86 +1,96 @@
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(26, 26, 26, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+            
+            // Close mobile menu after clicking a link
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('open');
             }
-        });
+        }
+    });
+});
 
-        // Reservation form handling
-        document.getElementById('reservationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+// Navbar background on scroll
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+    } else {
+        navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+    }
+});
 
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
+// Mobile menu toggle - FIXED VERSION
+const mobileMenu = document.querySelector('.mobile-menu');
+const navLinks = document.querySelector('.nav-links');
 
-            fetch('/reservation/', {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (!response.ok) throw new Error('Erreur lors de la réservation');
-                return response.json();
-            })
-            .then(() => {
-                const message = `Bonjour Le QuatorZe,\n\nJe souhaiterais réserver une table:\n\nNom: ${data.full_name}\nTéléphone: ${data.phone}\nDate: ${data.date}\nHeure: ${data.time}\nNombre de personnes: ${data.guests}\n\nMerci!`;
-                const whatsappUrl = `https://wa.me/212522209652?text=${encodeURIComponent(message)}`;
+mobileMenu.addEventListener('click', () => {
+    // Toggle both the nav-links visibility and the burger animation
+    navLinks.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+});
 
-                alert("Merci pour votre réservation ! Vous serez redirigé vers WhatsApp dans 3 secondes...");
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('active');
+        mobileMenu.classList.remove('open');
+    }
+});
 
-                setTimeout(() => {
-                    window.open(whatsappUrl, '_blank');
-                }, 3000);
-            })
-            .catch(err => alert(err.message));
-        });
-
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('date').setAttribute('min', today);
-
-        // Mobile menu toggle (basic functionality)
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
+// Reservation form handling
+const reservationForm = document.getElementById('reservationForm');
+if (reservationForm) {
+    reservationForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
+        const formData = new FormData(this);
+        const name = formData.get('full_name');
+        const phone = formData.get('phone');
+        const date = formData.get('date');
+        const time = formData.get('time');
+        const guests = formData.get('number_of_guests');
+        
+        // Create WhatsApp message
+        const message = `Bonjour Le QuatorZe,\n\nJe souhaiterais réserver une table:\n\nNom: ${name}\nTéléphone: ${phone}\nDate: ${date}\nHeure: ${time}\nNombre de personnes: ${guests}\n\nMerci!`;
+        
+        const whatsappUrl = `https://wa.me/212615760322?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+}
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+// Set minimum date to today
+const dateInput = document.getElementById('date');
+if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+}
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
 
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+        }
+    });
+}, observerOptions);
+
+// Observe all sections
+document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+});

@@ -28,7 +28,15 @@ def reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            form.save()
+            full_name = form.cleaned_data['full_name']
+            phone = form.cleaned_data['phone']
+            date = form.cleaned_data['date']
+            time = form.cleaned_data['time']
+            number_of_guests = form.cleaned_data['number_of_guests']
+
+            Reservation.objects.create(full_name=full_name, phone=phone, date=date, time=time, number_of_guests=number_of_guests)
+            
     else:
         form = ReservationForm()
     return render(request, 'pages/resevation_page.html', {'form': form})
+

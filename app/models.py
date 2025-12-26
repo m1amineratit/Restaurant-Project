@@ -12,6 +12,7 @@ class Menu(models.Model):
     title = models.CharField(max_length=250)
     description = models.TextField()
     price = models.IntegerField()
+    img = models.ImageField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -39,3 +40,6 @@ class Reservation(models.Model):
     date = models.DateField()
     time = models.CharField(max_length=250, choices=time_choice)
     number_of_guests = models.CharField(max_length=250, choices=GUESTS_CHOICES)
+
+    def __str__(self):
+        return f"{self.full_name} reserved a table for {self.number_of_guests} at {self.time} on {self.date}"

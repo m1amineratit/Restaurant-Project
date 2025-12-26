@@ -98,14 +98,14 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
+            gap: 5px;
         }
 
         .mobile-menu span {
             width: 25px;
             height: 3px;
-            background: var(--gold);
-            margin: 3px 0;
-            transition: 0.3s;
+            background-color: var(--gold);
+            transition: all 0.3s ease;
         }
 
         /* Hero Section */
@@ -298,7 +298,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .gallery-item:hover {
@@ -453,23 +453,34 @@
             font-size: 1.1rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
 
             .mobile-menu {
                 display: flex;
             }
 
-            .hero-content h1 {
-                font-size: 3.5rem;
-                letter-spacing: 2px;
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-dark);
+                flex-direction: column;
+                text-align: center;
+                display: none;
+                padding: 20px 0;
             }
 
-            .hero-content p {
-                font-size: 1.3rem;
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
             }
 
             .section-title {
